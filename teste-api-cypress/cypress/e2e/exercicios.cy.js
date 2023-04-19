@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
-// var faker = require('faker');
+
+import contrato from '../contracts/usuarios.contract';
 
 describe('Testes da Funcionalidade Usuários', () => {
   let token;
