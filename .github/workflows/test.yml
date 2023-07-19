@@ -1,18 +1,16 @@
 name: EBAC CI
 
-on: 
+on:
   push:
-    branches: [ ci ]
-  
+    branches: [ci]
+
   #Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
-  
   test:
-    
     runs-on: ubuntu-latest
-      
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -24,16 +22,13 @@ jobs:
         with:
           install-command: npm install
           browser: chrome
+          start: npm start
       - name: Publish Report
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./mochawesome-report  
+          publish_dir: ./mochawesome-report
       - name: Push to GitHub Pages
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@users.noreply.github.com"
-    
-       
-       
-
